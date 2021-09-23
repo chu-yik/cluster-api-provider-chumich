@@ -1,3 +1,10 @@
+# reference from here:
+# https://cluster-api.sigs.k8s.io/developer/providers/v1alpha2-to-v1alpha3.html#apply-the-contract-version-label-clusterx-k8sioversion-version1_version2_version3-to-your-crds
+# mapping from contract (CAPI) to our CRD
+commonLabels:
+  cluster.x-k8s.io/v1alpha4: v1alpha4
+  cluster.x-k8s.io/v1beta: v1alpha4
+
 # This kustomization.yaml is not intended to be run by itself,
 # since it depends on service name and namespace that are out of this kustomize package.
 # It should be run by config/default
