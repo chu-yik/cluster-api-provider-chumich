@@ -1,0 +1,6 @@
+domain: cluster.x-k8s.io
+layout:
+- go.kubebuilder.io/v3
+projectName: cluster-api-provider-chumich
+repo: github.com/chu-yik/cluster-api-provider-chumich
+version: "3"
