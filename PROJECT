@@ -13,4 +13,13 @@ resources:
   kind: ChumichCluster
   path: github.com/chu-yik/cluster-api-provider-chumich/api/v1alpha4
   version: v1alpha4
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: cluster.x-k8s.io
+  group: infrastructure
+  kind: ChumichMachine
+  path: github.com/chu-yik/cluster-api-provider-chumich/api/v1alpha4
+  version: v1alpha4
 version: "3"
