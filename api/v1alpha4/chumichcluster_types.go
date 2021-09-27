@@ -20,22 +20,31 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
+// sort of following:
+// https://cluster-api.sigs.k8s.io/developer/providers/implementers-guide/create_api.html
+type Priority string
+
+const (
+	PriorityHigh   = Priority("High")
+	PriorityMedium = Priority("Medium")
+	PriorityLow    = Priority("Low")
+)
 
 // ChumichClusterSpec defines the desired state of ChumichCluster
 type ChumichClusterSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of ChumichCluster. Edit chumichcluster_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Priority  Priority `json:"priority"`
+	Request   string   `json:"request"`
+	Requester string   `json:"requester"`
 }
 
 // ChumichClusterStatus defines the observed state of ChumichCluster
 type ChumichClusterStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	MessageID *string `json:"response"`
 }
 
 //+kubebuilder:object:root=true
