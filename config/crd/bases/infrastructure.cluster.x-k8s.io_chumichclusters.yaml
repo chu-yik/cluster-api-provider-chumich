@@ -36,13 +36,28 @@ spec:
           spec:
             description: ChumichClusterSpec defines the desired state of ChumichCluster
             properties:
-              foo:
-                description: Foo is an example field of ChumichCluster. Edit chumichcluster_types.go
-                  to remove/update
+              priority:
+                description: 'sort of following: https://cluster-api.sigs.k8s.io/developer/providers/implementers-guide/create_api.html'
                 type: string
+              request:
+                type: string
+              requester:
+                type: string
+            required:
+            - priority
+            - request
+            - requester
             type: object
           status:
             description: ChumichClusterStatus defines the observed state of ChumichCluster
+            properties:
+              response:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                type: string
+            required:
+            - response
             type: object
         type: object
     served: true
