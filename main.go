@@ -33,6 +33,7 @@ import (
 
 	infrastructurev1alpha4 "github.com/chu-yik/cluster-api-provider-chumich/api/v1alpha4"
 	"github.com/chu-yik/cluster-api-provider-chumich/controllers"
+	clusterv1 "sigs.k8s.io/cluster-api/api/v1alpha4"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -43,7 +44,9 @@ var (
 
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
-
+	// Error: no kind is registered for the type v1alpha4.Cluster
+	// when trying to get Cluster using util
+	utilruntime.Must(clusterv1.AddToScheme(scheme))
 	utilruntime.Must(infrastructurev1alpha4.AddToScheme(scheme))
 	//+kubebuilder:scaffold:scheme
 }
@@ -79,8 +82,9 @@ func main() {
 	}
 
 	if err = (&controllers.ChumichClusterReconciler{
-		Client: mgr.GetClient(),
-		Scheme: mgr.GetScheme(),
+		Client:    mgr.GetClient(),
+		Scheme:    mgr.GetScheme(),
+		Recipient: "hardcoded",
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "ChumichCluster")
 		os.Exit(1)

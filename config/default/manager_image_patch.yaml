@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: controller-manager
+  namespace: system
+spec:
+  template:
+    spec:
+      containers:
+      - image: 785380725963.dkr.ecr.us-west-2.amazonaws.com/cluster-api-chumich-controller:latest
+        name: manager

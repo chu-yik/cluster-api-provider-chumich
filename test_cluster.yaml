@@ -1,0 +1,21 @@
+apiVersion: cluster.x-k8s.io/v1alpha4
+kind: Cluster
+metadata:
+  name: hello-chumich2
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks: ["192.168.0.0/16"]
+  infrastructureRef:
+    apiVersion: infrastructure.cluster.x-k8s.io/v1alpha4
+    kind: ChumichCluster
+    name: hello-chumich2
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha4
+kind: ChumichCluster
+metadata:
+  name: hello-chumich2
+spec:
+  priority: "High"
+  request: "Please make me another cluster?"
+  requester: "chumich@example.com"
